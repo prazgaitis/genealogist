@@ -1,0 +1,27 @@
+<%= form_with(model: compilation, local: true) do |form| %>
+  <% if compilation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(compilation.errors.count, "error") %> prohibited this compilation from being saved:</h2>
+
+      <ul>
+      <% compilation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :page_count, required: true %>
+    <%= form.number_field :page_count, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url_identifier, "What's the ID?" %>
+    <%= form.text_field :url_identifier, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  page_count: 1
+  url_id: MyString
+  status: MyString
+  uuid: MyString
+
+two:
+  page_count: 1
+  url_id: MyString
+  status: MyString
+  uuid: MyString

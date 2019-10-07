@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page count:</strong>
+  <%= @compilation.page_count %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @compilation.status %>
+</p>
+
+<p>
+  <strong>Uuid:</strong>
+  <%= @compilation.uuid %>
+</p>
+
+<%= link_to 'Download', rails_blob_path(@compilation.compiled_pdf) %> |
+<%= link_to 'Edit', edit_compilation_path(@compilation) %> |
+<%= link_to 'Back', compilations_path %>
+
+<script>
+  console.log("compilation show")
+</script>
