@@ -14,6 +14,7 @@ class CompilePdfJob < ApplicationJob
     compilation
   rescue StandardError => e
     puts "ERROR: #{e}"
+    puts e.backtrace
     compilation.update(status: "failed")
   end
 
