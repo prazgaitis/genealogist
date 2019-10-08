@@ -13,7 +13,7 @@ class CompilePdfJob < ApplicationJob
     compilation.update(completed_at: DateTime.now, status: "completed")
     compilation
   rescue StandardError => e
-    puts e
+    puts "ERROR: #{e}"
     compilation.update(status: "failed")
   end
 
