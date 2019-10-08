@@ -15,7 +15,9 @@
   <%= @compilation.uuid %>
 </p>
 
-<%= link_to 'Download', rails_blob_path(@compilation.compiled_pdf) %> |
+<% if @compilation.status == "completed" %>
+  <%= link_to 'Download', rails_blob_path(@compilation.compiled_pdf) %> |
+<% end %>
 <%= link_to 'Edit', edit_compilation_path(@compilation) %> |
 <%= link_to 'Back', compilations_path %>
 

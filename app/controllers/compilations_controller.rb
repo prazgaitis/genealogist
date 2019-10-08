@@ -24,15 +24,16 @@ class CompilationsController < ApplicationController
   # POST /compilations
   # POST /compilations.json
   def create
-    compilation_params = compilation_params.merge({
+    some_params = compilation_params.merge({
       uuid: SecureRandom.uuid.first(8),
       status: "pending"
     })
 
-    @compilation = Compilation.new(compilation_params)
+    @compilation = Compilation.new(some_params)
 
     respond_to do |format|
       if @compilation.save
+        CompilePdfJob.perform_later(@compilation)
 
         format.html { redirect_to @compilation, notice: 'Compilation was successfully created.' }
         format.json { render :show, status: :created, location: @compilation }
@@ -75,6 +76,6 @@ class CompilationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def compilation_params
-      params#.require(:compilation).permit(:page_count, :url_identifier, :status, :uuid)
+      params.require(:compilation).permit(:page_count, :url_identifier)
     end
 end

@@ -3,6 +3,7 @@ class CompilePdfJob < ApplicationJob
 
   def perform(compilation)
     raise "Invalid data" unless compilation.page_count.present? && compilation.url_identifier.present?
+    Rails.logger.info("Started compiling PDF for Compilation #{compilation.id}")
     # Do something later
     compilation.update(status: "pending")
     images = download_images(compilation)
